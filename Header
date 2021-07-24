@@ -1,0 +1,18 @@
+// HTML :
+
+<div class="header">
+    <button type="submit" class="btn btn-link" style="float: right;" routerLink="/login">Logout</button>
+    <button type="submit" class="btn btn-link" style="float: right;" routerLink="/login">Login</button>
+    <button type="submit" class="btn btn-link" style="float: right;" routerLink="/register">Register</button>
+    <button type="submit" class="btn btn-link" style="float: left;" routerLink="/home">Home</button>
+  </div>
+  
+// css
+
+.header {
+    padding: 60px;
+    text-align: center;
+    background: #6d5f53;
+    color: white;
+    font-size: 30px;
+  }
