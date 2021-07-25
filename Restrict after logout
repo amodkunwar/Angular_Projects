@@ -1,0 +1,85 @@
+// create one LoginGuard service
+// In ts file
+
+import { ServiceService } from './service.service';
+import { Injectable } from '@angular/core';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class LoginGuardService implements CanActivate {
+
+  constructor(private service: ServiceService, private router: Router) { }
+
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+    if (this.service.isLoggedIn()) { // determine if the uder is logged in from this method.
+        return true;
+    }
+    this.router.navigate(['/login']);
+    return false;
+}
+}
+
+_________________________________________________________________________________________________________________
+
+// In rotuing module.ts
+
+import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { LoginGuardService } from './service/login-guard.service';
+
+const routes: Routes = [
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  {path:'register', component: RegisterComponent},
+  {path:'login', component: LoginComponent},
+  {path:'home', component: HomeComponent, canActivate: [LoginGuardService]}
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }
+
+_________________________________________________________________________________________________________________
+
+// In service.ts
+
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ServiceService {
+
+  constructor(private httpClinet: HttpClient) { }
+
+  loginStatus = false;
+
+  postEmployee(userRequest: any){
+    return this.httpClinet.post("http://localhost:8081/user/register", userRequest);
+  }
+
+  loginUser(userRequest: any){
+    this.loginStatus = true;
+    return this.httpClinet.post("http://localhost:8081/user/login", userRequest);
+  }
+
+  isLoggedIn() {
+    return this.loginStatus;
+  }
+
+  logOut(){
+    this.loginStatus = false;
+  }
+}
+
+
+
+
