@@ -1,0 +1,14 @@
+// environment.ts
+
+export const environment = {
+    isLoggedOut: true,
+    isLoggedIn: false
+}
+
+________________________________________________________________________________________
+
+// How to use in ts file
+
+env = environment;
+
+________________________________________________________________________________________
