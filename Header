@@ -1,11 +1,13 @@
 // HTML :
 
 <div class="header">
-    <button type="submit" class="btn btn-link" style="float: right;" routerLink="/login">Logout</button>
-    <button type="submit" class="btn btn-link" style="float: right;" routerLink="/login">Login</button>
-    <button type="submit" class="btn btn-link" style="float: right;" routerLink="/register">Register</button>
-    <button type="submit" class="btn btn-link" style="float: left;" routerLink="/home">Home</button>
+    <h3>AMOD</h3>
+    <button type="submit" class="btn btn-link" style="float: right;" *ngIf="env.isLoggedIn" (click)="logout()">Logout</button>
+    <button type="submit" class="btn btn-link" style="float: right;" *ngIf="env.isLoggedOut" routerLink="/login">Login</button>
+    <button type="submit" class="btn btn-link" style="float: right;" *ngIf="env.isLoggedOut" routerLink="/register">Register</button>
+    <button type="submit" class="btn btn-link" style="float: left;" *ngIf="env.isLoggedIn" routerLink="/home">Home</button>
   </div>
+<router-outlet></router-outlet>
   
 // css
 
