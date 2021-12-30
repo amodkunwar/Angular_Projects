@@ -1,0 +1,10 @@
+input.ng-touched.ng-invalid {
+    border: 1px solid red;
+}
+
+  .parent-container {
+    display: flex;
+    height: 100%;
+}
+
+

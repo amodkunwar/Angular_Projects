@@ -1,0 +1,16 @@
+input.ng-touched.ng-invalid {
+    border: 1px solid red;
+}
+
+/* .parent {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    flex-direction: column;
+    float: right;
+  } */
+
+  .parent-container {
+    display: flex;
+    height: 100%;
+}

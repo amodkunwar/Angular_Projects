@@ -1,0 +1,51 @@
+<div class="parent-container">
+  <div style="background-image: url('assets/img/KEDARNATH.jpg'); width: 70%;"></div>
+  <div class="container" style="width:30%">
+    <h3>Registration</h3>
+    <form [formGroup] = "register" (ngSubmit)="postData()">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Enter name</label>
+        <input type="text" class="form-control" id="exampleInputName" aria-describedby="emailHelp" placeholder="Enter name" formControlName="name"> 
+        <span *ngIf="(fval.name.touched) && fval.name.errors?.required">Please enter name</span>
+      </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Enter Eamil Address</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" formControlName="email"> 
+          <span *ngIf="(fval.email.touched) && fval.email.errors?.required">Please enter email address</span>
+          <span *ngIf="(fval.email.touched) && fval.email.errors?.email">Please enter valid email address</span>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Enter qualification</label>
+          <input type="text" class="form-control" id="exampleInputPassword1" placeholder="qualification" formControlName="qualification">
+          <span *ngIf="(fval.qualification.touched) && fval.qualification.errors?.required">Please enter qualification</span>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Enter percentage</label>
+          <input type="text" class="form-control" id="exampleInputPassword1" placeholder="percentage" formControlName="percentage"> 
+          <span *ngIf="(fval.percentage.touched) && fval.percentage.errors?.required">Please enter percentage</span>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Enter mobile</label>
+          <input type="text" class="form-control" id="exampleInputPassword1" placeholder="mobile" formControlName="mobile"> 
+          <span *ngIf="(fval.mobile.touched) && fval.mobile.errors?.required">Please enter mobile</span>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Enter location</label>
+          <input type="text" class="form-control" id="exampleInputPassword1" placeholder="location" formControlName="location"> 
+          <span *ngIf="(fval.location.touched) && fval.location.errors?.required">Please enter location</span>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Enter password</label>
+          <input type="text" class="form-control" id="exampleInputPassword1" placeholder="password" formControlName="password"> 
+          <span *ngIf="(fval.password.touched) && fval.password.errors?.required">Please enter password</span>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Confirm password</label>
+          <input type="text" class="form-control" id="exampleInputPassword1" placeholder="confirm password" formControlName="confirmPassword"> 
+          <span *ngIf="(fval.confirmPassword.touched) && fval.confirmPassword.errors?.required" >Please re-enter password</span>
+          <span *ngIf="fval.confirmPassword.errors?.ConfirmedValidator">Password and confirm password must be same.</span>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="register.invalid">Register</button>
+      </form>
+  </div>
+</div>

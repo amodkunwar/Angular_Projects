@@ -1,0 +1,21 @@
+<div class="parent-container">
+  <div style="background-image: url('assets/img/KEDARNATH.jpg'); width: 70%; height: 600px;"></div>
+  <div class="container" style="width:30%; ">
+    <h3>Login</h3>
+    <span *ngIf="inValidCredentials" style="color: red;">{{errorMessage}}</span>
+    <form [formGroup] = "login" (ngSubmit)="loginUser()">
+        <div class="form-group">
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" formControlName="email"> 
+          <span *ngIf="(fval.email.touched) && fval.email.errors?.required">Please enter email address</span>
+          <span *ngIf="(fval.email.touched) && fval.email.errors?.email">Please enter valid email address</span>
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" id="exampleInputPassword1" placeholder="password" formControlName="password"> 
+          <span *ngIf="(fval.password.touched) && fval.password.errors?.required">Please enter password</span>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="login.invalid">Login</button><br>
+        <!-- <button type="submit" class="btn btn-link" style="float: left;" routerLink="/password">Forgot password</button> -->
+        <button type="submit" class="btn btn-link" style="float: left;" routerLink="/password">Reset password via email !</button>
+      </form>
+  </div>
+</div>

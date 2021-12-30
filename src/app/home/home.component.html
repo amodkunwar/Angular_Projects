@@ -1,0 +1,28 @@
+<div class="dropdown">
+    <button class="dropbtn">Menu</button>
+    <div class="dropdown-content">
+        <button type="submit" class="btn btn-link" (click)="getProfile()">My Profile</button>
+        <button type="submit" class="btn btn-link" (click)= "logout()" >Logout</button>
+    </div>
+  </div>
+
+  <div class="container">
+    <table class="table" *ngIf="status">
+        <thead>
+          <tr>
+            <th scope="col">Email</th>
+            <th scope="col">Name</th>
+            <th scope="col">Qualification</th>
+            <th scope="col">Mobile</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngIf="status">
+            <td *ngIf="status">{{ user.userEmail }}</td>
+            <td *ngIf="status"> {{ user.userName }}</td>
+            <td *ngIf="status"> {{ user.userQualification }}</td>
+            <td *ngIf="status"> {{ user.userMobile }}</td>
+          </tr>
+        </tbody>
+      </table>
+</div>
